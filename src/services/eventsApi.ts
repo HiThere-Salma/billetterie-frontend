@@ -6,6 +6,11 @@ export const fetchEvents = async (): Promise<Event[]> => {
   return res.data;
 };
 
+export async function fetchEventById(id: number): Promise<Event> {
+  const { data } = await http.get<Event>(`/events/${id}`);
+  return data;
+}
+
 export const createEvent = async (payload: EventCreate): Promise<Event> => {
   const res = await http.post('/events', payload);
   return res.data;
